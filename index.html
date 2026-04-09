@@ -3,65 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Off Da Branch™</title>
+  <title>Off Da Branch | Culture-Rooted Goods</title>
+  <meta
+    name="description"
+    content="Off Da Branch connects earth-rooted goods, TrapCotton apparel, and community-centered storytelling through a focused brand site."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar">
-    <img src="images/logo.png" alt="Off Da Branch Logo" class="logo" />
-    <button id="menu-toggle">&#9776;</button>
-    <ul id="nav-links" class="hidden">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <header class="hero" id="home">
-    <h1>Off Da Branch™</h1>
-    <p>From Seed to Stitch — Cultivating Community</p>
-  </header>
-  <main>
-    <section id="about" class="fade-in">
-      <h2>Our Story</h2>
-      <img src="images/about.jpg" alt="About Off Da Branch" class="section-img" />
-      <p>Off Da Branch™ fuses eco-conscious values with urban culture. We deliver premium, earth-rooted products that empower communities and showcase sustainable style.</p>
-    </section>
-    <section id="shop" class="fade-in">
-      <h2>TrapCotton™ & Grow Kits</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="images/apparel.jpg" alt="Apparel" />
-          <h3>TrapCotton™ Apparel</h3>
-          <p>Bold, sustainable streetwear that speaks.</p>
-        </div>
-        <div class="card">
-          <img src="images/growkit.jpg" alt="Grow Kit" />
-          <h3>Grow Kits</h3>
-          <p>All-in-one organic kits for indoor green life.</p>
+  <div class="page-shell">
+    <nav class="navbar">
+      <a href="#home" class="brand-mark">
+        <img src="images/logo.svg" alt="Off Da Branch logo" class="logo" />
+        <span>Off Da Branch</span>
+      </a>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-links">
+        Menu
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero reveal" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">TrapCotton, grow culture, and grounded storytelling</p>
+        <h1>Built from the soil up, styled for people who move with purpose.</h1>
+        <p class="hero-text">
+          Off Da Branch brings together culture-rooted apparel, starter grow goods, and a brand voice
+          that feels local, durable, and unmistakably real.
+        </p>
+        <div class="hero-actions">
+          <a href="#shop" class="button button-primary">Explore the line</a>
+          <a href="#contact" class="button button-secondary">Start a conversation</a>
         </div>
       </div>
-    </section>
-    <section id="testimonials" class="fade-in">
-      <h2>What Our Community Says</h2>
-      <blockquote>"TrapCotton is culture. I wear it with pride and purpose."</blockquote>
-      <blockquote>"The grow kit made it easy to start fresh at home. 10/10."</blockquote>
-    </section>
-    <section id="contact" class="fade-in">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Off Da Branch™ — All Rights Reserved</p>
-  </footer>
+      <div class="hero-panel">
+        <p>Current focus</p>
+        <ul>
+          <li>TrapCotton capsule drops</li>
+          <li>Entry-friendly grow kits</li>
+          <li>Community-first product storytelling</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="content-section reveal">
+        <div class="section-copy">
+          <p class="eyebrow">Our story</p>
+          <h2>Urban culture, sustainable product thinking, and a direct line to community.</h2>
+          <p>
+            Off Da Branch is a brand system for apparel, starter grow products, and narrative-led
+            experiences that feel rooted instead of mass-produced. The goal is simple: products that
+            carry identity, utility, and a long-term point of view.
+          </p>
+        </div>
+        <img src="images/about-ecosystem.svg" alt="Illustration of the Off Da Branch brand ecosystem" class="section-image" />
+      </section>
+
+      <section id="shop" class="content-section reveal">
+        <div class="section-header">
+          <p class="eyebrow">Featured lanes</p>
+          <h2>Two product lanes. One brand language.</h2>
+        </div>
+        <div class="product-grid">
+          <article class="product-card">
+            <img src="images/trapcotton-card.svg" alt="TrapCotton apparel illustration" />
+            <div>
+              <h3>TrapCotton Apparel</h3>
+              <p>Statement-ready streetwear built around texture, pride, and repeatable capsule drops.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="images/grow-kit-card.svg" alt="Grow kit illustration" />
+            <div>
+              <h3>Grow Kits</h3>
+              <p>Starter-friendly kits that make it easier to begin with confidence and keep growing.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="community" class="content-section reveal community-band">
+        <div class="section-header">
+          <p class="eyebrow">Community response</p>
+          <h2>People come for the look. They stay for the meaning.</h2>
+        </div>
+        <div class="quote-grid">
+          <blockquote>
+            <p>"It feels like the brand already knows the neighborhood it belongs to."</p>
+            <cite>Community buyer</cite>
+          </blockquote>
+          <blockquote>
+            <p>"The grow kit keeps the barrier low without making it feel basic."</p>
+            <cite>First-time customer</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="contact" class="content-section reveal">
+        <div class="section-copy">
+          <p class="eyebrow">Contact</p>
+          <h2>Use the form below to open a prefilled email to the brand inbox.</h2>
+          <p>
+            This site currently routes inquiries through your local mail client, which removes the dead
+            placeholder endpoint and keeps outreach operational without a separate backend.
+          </p>
+        </div>
+        <form id="contact-form" class="contact-form">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" placeholder="What are you trying to build, buy, or discuss?" required></textarea>
+          <button type="submit" class="button button-primary">Compose email</button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Off Da Branch</p>
+      <a href="mailto:admin@branchoffholdings.com">admin@branchoffholdings.com</a>
+    </footer>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
