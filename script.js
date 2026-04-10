@@ -3,6 +3,53 @@ const navLinks = document.getElementById("nav-links");
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const publicIntakePath = "/api/public/intake/contact";
+
+function resolvePublicIntakeEndpoint() {
+  const explicitBaseUrl = document
+    .querySelector('meta[name="branchops-public-api-base"]')
+    ?.getAttribute('content')
+    ?.trim();
+
+  if (explicitBaseUrl) {
+    return `${explicitBaseUrl.replace(/\/$/, '')}${publicIntakePath}`;
+  }
+
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return `http://localhost:4000${publicIntakePath}`;
+  }
+
+  return `${window.location.origin}${publicIntakePath}`;
+}
+
+function ensureHoneypotField(form) {
+  if (form.querySelector('input[name="website"]')) {
+    return;
+  }
+
+  const honeypotWrapper = document.createElement('div');
+  honeypotWrapper.setAttribute('aria-hidden', 'true');
+  honeypotWrapper.style.position = 'absolute';
+  honeypotWrapper.style.left = '-9999px';
+  honeypotWrapper.style.width = '1px';
+  honeypotWrapper.style.height = '1px';
+  honeypotWrapper.style.overflow = 'hidden';
+
+  const honeypotLabel = document.createElement('label');
+  honeypotLabel.textContent = 'Leave this field empty';
+  honeypotLabel.htmlFor = 'brand-contact-website';
+
+  const honeypotInput = document.createElement('input');
+  honeypotInput.type = 'text';
+  honeypotInput.name = 'website';
+  honeypotInput.id = 'brand-contact-website';
+  honeypotInput.tabIndex = -1;
+  honeypotInput.autocomplete = 'off';
+
+  honeypotWrapper.append(honeypotLabel, honeypotInput);
+  form.prepend(honeypotWrapper);
+}
 
 if (navLinks) {
   navLinks.dataset.open = "false";
@@ -42,25 +89,63 @@ if (!prefersReducedMotion) {
 }
 
 if (contactForm && formStatus) {
-  contactForm.addEventListener("submit", (event) => {
+  ensureHoneypotField(contactForm);
+
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(contactForm);
-    const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const message = String(formData.get("message") ?? "").trim();
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const previousButtonLabel = submitButton?.textContent ?? 'Compose email';
 
-    const subject = encodeURIComponent(`Off Da Branch inquiry from ${name}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        "",
-        message,
-      ].join("\n")
-    );
+    formStatus.textContent = 'Sending your inquiry…';
 
-    formStatus.textContent = "Opening your mail app with a prefilled message.";
-    window.location.href = `mailto:admin@branchoffholdings.com?subject=${subject}&body=${body}`;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+    }
+
+    try {
+      const formData = new FormData(contactForm);
+      const payload = {
+        sourceSite: 'off-da-branch-site',
+        inquiryType: 'general',
+        name: String(formData.get("name") ?? '').trim(),
+        email: String(formData.get("email") ?? '').trim(),
+        companyName: null,
+        phone: null,
+        message: String(formData.get("message") ?? '').trim(),
+        website: String(formData.get("website") ?? '').trim(),
+      };
+
+      const response = await fetch(resolvePublicIntakeEndpoint(), {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const responseBody = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          responseBody?.message || 'The inquiry could not be sent right now. Please try again shortly.'
+        );
+      }
+
+      contactForm.reset();
+      ensureHoneypotField(contactForm);
+      formStatus.textContent = 'Your inquiry was received. The team will follow up through your provided email.';
+    } catch (error) {
+      formStatus.textContent =
+        error instanceof Error
+          ? error.message
+          : 'The inquiry could not be sent right now. Please try again shortly.';
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = previousButtonLabel;
+      }
+    }
   });
 }
