@@ -116,7 +116,8 @@ img {
 .hero-panel,
 .product-card,
 .community-band,
-.contact-form {
+.contact-form,
+.proof-band {
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: var(--shadow);
@@ -137,9 +138,13 @@ img {
 .hero-panel li,
 .hero-text,
 .section-copy p,
+.section-header p,
 .product-card p,
+.proof-card p,
 .footer a,
-.form-status {
+.form-status,
+.form-disclaimer,
+.footer-note {
   color: rgba(248, 241, 231, 0.78);
 }
 
@@ -176,7 +181,8 @@ h3 {
 }
 
 .hero-text,
-.section-copy p {
+.section-copy p,
+.section-header p {
   max-width: 62ch;
   font-size: 1.02rem;
 }
@@ -231,7 +237,9 @@ h3 {
 }
 
 .product-grid,
-.quote-grid {
+.quote-grid,
+.proof-grid,
+.contact-grid {
   display: grid;
   gap: 20px;
 }
@@ -251,6 +259,24 @@ h3 {
 .product-card img {
   width: 100%;
   border-radius: 22px;
+}
+
+.proof-band {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(64, 83, 56, 0.26), rgba(199, 146, 67, 0.08));
+}
+
+.proof-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.proof-card {
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(248, 241, 231, 0.12);
+  background: rgba(16, 20, 18, 0.46);
 }
 
 .community-band {
@@ -285,8 +311,13 @@ cite {
   background: rgba(248, 241, 231, 0.05);
 }
 
+.contact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 14px 16px;
   border: 1px solid rgba(248, 241, 231, 0.12);
@@ -296,9 +327,20 @@ textarea {
   font: inherit;
 }
 
+select {
+  appearance: none;
+}
+
 textarea {
   min-height: 168px;
   resize: vertical;
+}
+
+.form-disclaimer,
+.form-status,
+.footer-note {
+  margin: 0;
+  font-size: 0.92rem;
 }
 
 .footer {
@@ -311,7 +353,7 @@ textarea {
 }
 
 .footer p {
-  margin: 0;
+  margin: 0 0 4px;
   font-family: "Space Grotesk", sans-serif;
 }
 
@@ -351,7 +393,9 @@ textarea {
   .hero,
   .content-section,
   .product-grid,
-  .quote-grid {
+  .quote-grid,
+  .proof-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 

@@ -8,6 +8,20 @@
     name="description"
     content="Off Da Branch connects earth-rooted goods, TrapCotton apparel, and community-centered storytelling through a focused brand site."
   />
+  <meta name="theme-color" content="#101412" />
+  <meta property="og:title" content="Off Da Branch | Culture-Rooted Goods" />
+  <meta
+    property="og:description"
+    content="Culture-rooted apparel, starter grow goods, and community-centered storytelling built through one brand system."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Off Da Branch | Culture-Rooted Goods" />
+  <meta
+    name="twitter:description"
+    content="TrapCotton apparel, grow culture, and grounded storytelling through a focused brand site."
+  />
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -29,7 +43,7 @@
       <ul id="nav-links" class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#shop">Shop</a></li>
-        <li><a href="#community">Community</a></li>
+        <li><a href="#momentum">Momentum</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -44,7 +58,7 @@
         </p>
         <div class="hero-actions">
           <a href="#shop" class="button button-primary">Explore the line</a>
-          <a href="#contact" class="button button-secondary">Start a conversation</a>
+          <a href="#contact" class="button button-secondary">Send brand inquiry</a>
         </div>
       </div>
       <div class="hero-panel">
@@ -75,6 +89,10 @@
         <div class="section-header">
           <p class="eyebrow">Featured lanes</p>
           <h2>Two product lanes. One brand language.</h2>
+          <p>
+            The site now routes direct brand inquiries into a controlled workflow, so product interest,
+            collaborations, and wholesale conversations can all move through one owned intake path.
+          </p>
         </div>
         <div class="product-grid">
           <article class="product-card">
@@ -90,6 +108,31 @@
               <h3>Grow Kits</h3>
               <p>Starter-friendly kits that make it easier to begin with confidence and keep growing.</p>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="momentum" class="reveal proof-band">
+        <div class="section-header">
+          <p class="eyebrow">Current momentum</p>
+          <h2>Clear lanes for drops, collaborations, and brand growth.</h2>
+          <p>
+            Off Da Branch is stronger when the visual identity, intake path, and release strategy move together.
+            These are the lanes the site is now built to support.
+          </p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <h3>Capsule drop system</h3>
+            <p>TrapCotton is positioned for repeatable capsule releases instead of one-off product noise.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Brand inquiry routing</h3>
+            <p>Collab, wholesale, and general brand inquiries can now be qualified before follow-up begins.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Grow-goods lane</h3>
+            <p>The starter product side keeps the brand tied to real utility instead of image alone.</p>
           </article>
         </div>
       </section>
@@ -114,24 +157,38 @@
       <section id="contact" class="content-section reveal">
         <div class="section-copy">
           <p class="eyebrow">Contact</p>
-          <h2>Use the form below to open a prefilled email to the brand inbox.</h2>
+          <h2>Send your inquiry directly to the brand team.</h2>
           <p>
-            This site currently routes inquiries through your local mail client, which removes the dead
-            placeholder endpoint and keeps outreach operational without a separate backend.
+            Use this form for collaborations, wholesale interest, product questions, and general brand conversations.
+            The inquiry is sent through the owned Off Da Branch intake workflow instead of relying on a local mail app.
           </p>
         </div>
         <form id="contact-form" class="contact-form">
-          <input type="text" name="name" placeholder="Your name" required />
-          <input type="email" name="email" placeholder="Your email" required />
+          <div class="contact-grid">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <input type="text" name="companyName" placeholder="Company, store, or brand" />
+            <input type="tel" name="phone" placeholder="Phone number" />
+            <select name="inquiryType" aria-label="Inquiry type">
+              <option value="collaboration">Collaboration</option>
+              <option value="wholesale">Wholesale</option>
+              <option value="product-interest">Product interest</option>
+              <option value="general">General inquiry</option>
+            </select>
+          </div>
           <textarea name="message" placeholder="What are you trying to build, buy, or discuss?" required></textarea>
-          <button type="submit" class="button button-primary">Compose email</button>
+          <button type="submit" class="button button-primary">Send inquiry</button>
+          <p class="form-disclaimer">By submitting, you agree to be contacted about your request.</p>
           <p id="form-status" class="form-status" aria-live="polite"></p>
         </form>
       </section>
     </main>
 
     <footer class="footer">
-      <p>Off Da Branch</p>
+      <div>
+        <p>Off Da Branch</p>
+        <span class="footer-note">Direct brand inquiry workflow active</span>
+      </div>
       <a href="mailto:admin@branchoffholdings.com">admin@branchoffholdings.com</a>
     </footer>
   </div>

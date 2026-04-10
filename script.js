@@ -95,7 +95,7 @@ if (contactForm && formStatus) {
     event.preventDefault();
 
     const submitButton = contactForm.querySelector('button[type="submit"]');
-    const previousButtonLabel = submitButton?.textContent ?? 'Compose email';
+    const previousButtonLabel = submitButton?.textContent ?? 'Send inquiry';
 
     formStatus.textContent = 'Sending your inquiry…';
 
@@ -108,11 +108,11 @@ if (contactForm && formStatus) {
       const formData = new FormData(contactForm);
       const payload = {
         sourceSite: 'off-da-branch-site',
-        inquiryType: 'general',
+        inquiryType: String(formData.get("inquiryType") ?? 'general').trim() || 'general',
         name: String(formData.get("name") ?? '').trim(),
         email: String(formData.get("email") ?? '').trim(),
-        companyName: null,
-        phone: null,
+        companyName: String(formData.get("companyName") ?? '').trim() || null,
+        phone: String(formData.get("phone") ?? '').trim() || null,
         message: String(formData.get("message") ?? '').trim(),
         website: String(formData.get("website") ?? '').trim(),
       };
@@ -135,7 +135,7 @@ if (contactForm && formStatus) {
 
       contactForm.reset();
       ensureHoneypotField(contactForm);
-      formStatus.textContent = 'Your inquiry was received. The team will follow up through your provided email.';
+      formStatus.textContent = 'Your inquiry was received. The brand team will follow up through your provided email.';
     } catch (error) {
       formStatus.textContent =
         error instanceof Error
